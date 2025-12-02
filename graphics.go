@@ -16,23 +16,24 @@ const (
 	screenWidth  = 1000
 	screenHeight = 1010
 	textHeight   = 15
+	dotRadius    = 2
 )
 
 // Game implements the ebitengine.Game interface.
 type Game struct {
-	circleX            float32
-	circleY            float32
-	totalPoints        int
-	totalPointsDelta   int
-	radius             float32
-	squareColor        color.RGBA
-	circeColor         color.RGBA
-	dotColor           color.RGBA
-	updateSpeedHz      int
-	iteration          int
-	dots               []Dot
-	pi                 float64
-	errorPct           float64
+	circleX          float32
+	circleY          float32
+	totalPoints      int
+	totalPointsDelta int
+	radius           float32
+	squareColor      color.RGBA
+	circeColor       color.RGBA
+	dotColor         color.RGBA
+	updateSpeedHz    int
+	iteration        int
+	dots             []Dot
+	pi               float64
+	errorPct         float64
 }
 
 type Dot struct {
@@ -43,7 +44,7 @@ type Dot struct {
 // Update updates the game state. This is called every frame (e.g., 60 times/second).
 func (g *Game) Update() error {
 	// Generate the next set of dots, bigger and bigger each time.
-	if g.iteration % g.updateSpeedHz == 0 {
+	if g.iteration%g.updateSpeedHz == 0 {
 		g.dots, g.pi = calculatePi(g.totalPoints)
 		g.errorPct = math.Abs(g.pi-math.Pi) / math.Pi * 100.0
 		g.totalPoints += g.totalPointsDelta
@@ -59,8 +60,8 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	ebitenutil.DebugPrint(screen, fmt.Sprintf("Samples: %d, Estimated Pi: %f. Error: %.4f%%\n", len(g.dots), g.pi, g.errorPct))
 	for i := 0; i < len(g.dots); i++ {
 		dotX := g.dots[i].x * g.radius * 2
-		dotY := g.dots[i].y * g.radius * 2 + textHeight
-		vector.FillCircle(screen, dotX, dotY, 1, g.dotColor, false)
+		dotY := g.dots[i].y*g.radius*2 + textHeight
+		vector.FillCircle(screen, dotX, dotY, dotRadius, g.dotColor, false)
 	}
 }
 
