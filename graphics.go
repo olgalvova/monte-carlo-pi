@@ -24,7 +24,6 @@ type Game struct {
 	circleY            float32
 	totalPoints        int
 	totalPointsDelta   int
-	pointsInsideCircle int
 	radius             float32
 	squareColor        color.RGBA
 	circeColor         color.RGBA
