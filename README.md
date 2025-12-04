@@ -8,11 +8,14 @@ Estimating the value of pi () by finding the area of a circle within a square. 
 5. Multiplying this ratio by 4 gives an estimate of P
  
 ## Calculate an Integral of any function
-1. Draw a rectangle that fits a sergment of a functional graph in a given X interval
-2. Generated random dots within it
-3. Count how many falls inside (between the function graph and X axis)
-4. The ratio of the count of inside points to total points multiplied by the area of the rectangle is the value of the integral
- 
+1. Draw a rectangle that fits a sergment of a functional graph in a given X interval. 
+2. Generate random dots within it.
+3. Count how many dots fall in between the function graph and X axis. Do this separately for negative and positive y values.
+4. The ratio of the count of inside points to total points multiplied by the area of the rectangle is the value of the integral. Again, negative and positive portions are counted separated and then added. 
+
+Known limitations: 
+- Assuming the function is monotonous when drawing a box to plant the dots in, i.e. assuming the function has a single min and max and it's at either side of the range.
+
 ## Dependencies
 Requires [Ebitengine](https://ebitengine.org/en/documents/install.html) for Go 2D graphics.
 
