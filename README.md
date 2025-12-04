@@ -27,13 +27,17 @@ Usage of ./pi:
     	Max x of the integration range (default 10)
 ```
 
-Calculate Pi text mode with 10,000,000 samples:
+Calculate Pi text mode with 100,000,000 samples:
 ```
-./pi-text t 10000000
+ ./pi -m pi-text -c 100000000
+Starting Monte Carlo Pi estimation with 100000000 points...
+Estimated Pi: 3.141819
+Actual math.Pi: 3.141593
+Error: 0.0072%
 ```
 Calculate Pi in graphical mode starting with 10 samples and increasing by 10 samples with each iteration:
 ```
-./pi g 10 10
+./pi -m pi -c 10 -i 10
 ```
 
 Square root of x from 1 to 10:
