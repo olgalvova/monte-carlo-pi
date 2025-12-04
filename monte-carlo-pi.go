@@ -16,6 +16,11 @@ const (
 	dotRadius  = 2
 )
 
+type Dot struct {
+	x float32
+	y float32
+}
+
 // calculatePi uses the Monte Carlo method to estimate Pi with a given number of points.
 func calculatePi(totalPoints int) ([]Dot, float64) {
 	pointsInsideCircle := 0
