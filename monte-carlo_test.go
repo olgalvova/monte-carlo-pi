@@ -48,7 +48,13 @@ func TestMonteCarloIntegralExp(t *testing.T) {
 	if math.Round(estimate) != 54.0 { // XXX 50?!
 		t.Errorf("Wrong integral of y = e^x over [0, 4]: %f", estimate)
 	}
-	//fmt.Println("y=e^x OK")
+
+	estimate = monteCarlo(exp, Range{0, 10}, 100_000_000)
+	if math.Round(estimate) != 22025 { // XXX very close. Need to use % error instead of an exact comparison.
+		t.Errorf("Wrong integral of y = e^x over [0, 4]: %f", estimate)
+	} else {
+		fmt.Println("y=e^x OK for [0 10]")
+	}
 }
 
 func TestMonteCarloIntegralOneOverX(t *testing.T) {
