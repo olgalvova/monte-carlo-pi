@@ -11,13 +11,41 @@ Requires [Ebitengine](https://ebitengine.org/en/documents/install.html) for Go 2
 
 ## Usage
 ```
-./pi <mode> <number of samples> [<number of samples increment>]
+./pi --help
+Usage of ./pi:
+  -c int
+    	Number of samples (default 1000)
+  -f string
+    	[sqrt(x) x^2 1/(x+1)(sqrt(x)) x 10 e^x 1/x] (default "x")
+  -i int
+    	Number of samples increment (default 1000)
+  -m string
+    	Mode: pi, pi-text, func (default "pi")
+  -n float
+    	Min x of the integration range
+  -x float
+    	Max x of the integration range (default 10)
 ```
-Run in text mode with 10,000,000 samples:
+
+Calculate Pi text mode with 10,000,000 samples:
 ```
-./pi t 10000000
+./pi-text t 10000000
 ```
-Run in graphical mode starting with 10 samples and increasing by 10 samples with each iteration:
+Calculate Pi in graphical mode starting with 10 samples and increasing by 10 samples with each iteration:
 ```
 ./pi g 10 10
+```
+
+Square root of x from 1 to 10:
+```
+./pi -c 100000000 -m func -n 1 -x 10 -f "sqrt(x)"
+Starting Monte Carlo for function sqrt(x) with 100000000 points...
+Estimate: 20.414715
+```
+
+Square of x from 1 to 10:
+```
+./pi -c 100000000 -m func -n 1 -x 10 -f x^2      
+Starting Monte Carlo for function x^2 with 100000000 points...
+Estimate: 332.945685
 ```
