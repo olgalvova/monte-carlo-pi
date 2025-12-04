@@ -14,6 +14,7 @@ func init() {
 		"y=1/x":              oneOverX,
 		"y=sqrt(x)":          sqrt,
 		"y=x^2":              sqr,
+		"y=x^3":              pow3,
 		"y=1/(x+1)(sqrt(x))": oneOverXPlusOneTimesSqrtX,
 	}
 }
@@ -49,4 +50,8 @@ func sqrt(x float64) float64 {
 
 func sqr(x float64) float64 {
 	return math.Pow(x, 2)
+}
+
+func pow3(x float64) float64 {
+	return math.Pow(x, 3)
 }
